@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>com.saru</groupId>
-        <artifactId>movie-booking</artifactId>
+        <artifactId>movie-booking-application</artifactId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
 
