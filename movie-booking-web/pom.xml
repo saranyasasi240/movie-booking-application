@@ -9,7 +9,7 @@
         <version>0.0.1-SNAPSHOT</version>
     </parent>
 
-    <groupId>org.spring</groupId>
+    <groupId>com.saru</groupId>
     <artifactId>movie-booking-web</artifactId>
 
     <properties>
@@ -21,7 +21,7 @@
         <dependency>
             <groupId>com.saru</groupId>
             <artifactId>movie-booking-data</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
+            <version>${project.version}</version>
         </dependency>
         <dependency>
             <groupId>org.projectlombok</groupId>
