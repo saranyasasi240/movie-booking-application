@@ -1,8 +1,8 @@
 package com.saru.movie_booking.controller;
 
 
-import com.saru.dto.UserDTO;
-import com.saru.service.UserService;
+import com.saru.movie_booking.dto.UserDTO;
+import com.saru.movie_booking.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
