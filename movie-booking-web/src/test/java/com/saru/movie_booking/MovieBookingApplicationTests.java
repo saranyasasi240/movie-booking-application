@@ -9,6 +9,7 @@ import org.springframework.context.annotation.ComponentScan;
 
 class MovieBookingApplicationTests {
 
+	// Test case
 	@Test
 	void contextLoads() {
 	}
