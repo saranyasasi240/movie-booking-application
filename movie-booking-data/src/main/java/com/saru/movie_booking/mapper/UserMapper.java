@@ -4,7 +4,6 @@ import com.saru.movie_booking.dto.UserDTO;
 import com.saru.movie_booking.model.User;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
-import org.springframework.stereotype.Component;
 
 @Mapper(componentModel = "spring", uses = {BookingMapper.class})
 public interface UserMapper {
