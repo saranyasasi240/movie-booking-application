@@ -5,7 +5,6 @@ import com.saru.movie_booking.mapper.UserMapper;
 import com.saru.movie_booking.model.User;
 import com.saru.movie_booking.repository.UserRepository;
 import com.saru.movie_booking.service.UserService;
-import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
