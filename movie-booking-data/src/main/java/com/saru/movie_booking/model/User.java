@@ -21,7 +21,4 @@ public class User {
     @Column(name = "password_hash")
     private String password;
     private String phone;
-
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
-    private List<Booking> bookings;
 }
