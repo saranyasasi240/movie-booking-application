@@ -1,16 +1,16 @@
 package com.saru.movie_booking.service;
 
-import com.saru.movie_booking.model.Movie;
+import com.saru.movie_booking.dto.MovieDTO;
 
 import java.util.List;
 import java.util.Optional;
 
 public interface MovieService {
-    Movie addMovie(Movie movie);
+    MovieDTO addMovie(MovieDTO movie);
 
-    List<Movie> getAllMovies();
+    List<MovieDTO> getAllMovies();
 
-    Optional<Movie> getMovieById(Long id);
+    Optional<MovieDTO> getMovieById(Long id);
 
     void deleteMovie(Long id);
 }
