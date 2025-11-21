@@ -3,7 +3,6 @@ package com.saru.movie_booking.model;
 import jakarta.persistence.*;
 import lombok.*;
 
-import java.util.List;
 
 @Entity
 @Getter
@@ -21,7 +20,4 @@ public class User {
     @Column(name = "password_hash")
     private String password;
     private String phone;
-
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
-    private List<Booking> bookings;
 }

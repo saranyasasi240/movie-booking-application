@@ -2,8 +2,6 @@ package com.saru.movie_booking.dto;
 
 import lombok.Data;
 
-import java.util.List;
-
 @Data
 public class UserDTO {
     private long id;
@@ -11,5 +9,4 @@ public class UserDTO {
     private String email;
     private String password;
     private String phone;
-//    private List<BookingDTO> bookings;
 }

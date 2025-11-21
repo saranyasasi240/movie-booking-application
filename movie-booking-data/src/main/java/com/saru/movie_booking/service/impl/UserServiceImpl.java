@@ -5,14 +5,13 @@ import com.saru.movie_booking.mapper.UserMapper;
 import com.saru.movie_booking.model.User;
 import com.saru.movie_booking.repository.UserRepository;
 import com.saru.movie_booking.service.UserService;
-import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
 @Service
-//@RequiredArgsConstructor
 public class UserServiceImpl implements UserService {
 
     private final UserRepository userRepository;
@@ -31,13 +30,20 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public List<User> getAllUsers() {
-        return userRepository.findAll();
+    public List<UserDTO> getAllUsers() {
+        List<UserDTO> allUserDTO = new ArrayList<>();
+        List<User> allUser = userRepository.findAll();
+        for (User user : allUser) {
+            allUserDTO.add(userMapper.toDTO(user));
+        }
+        return allUserDTO;
     }
 
     @Override
-    public Optional<User> getUserById(Long id) {
-        return userRepository.findById(id);
+    public Optional<UserDTO> getUserById(Long id) {
+        Optional<User> user = userRepository.findById(id);
+        UserDTO userDTO = userMapper.toDTO(user.orElse(null));
+        return Optional.ofNullable(userDTO);
     }
 
     @Override
