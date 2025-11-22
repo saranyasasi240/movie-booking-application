@@ -4,8 +4,6 @@ package com.saru.movie_booking.model;
 import jakarta.persistence.*;
 import lombok.*;
 
-import java.util.List;
-
 @Entity
 @Getter
 @Setter
@@ -21,7 +19,4 @@ public class Theater {
     private String name;
     private String city;
     private String address;
-
-    @OneToMany(cascade = CascadeType.ALL)
-    private List<Screen> screens;
 }

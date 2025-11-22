@@ -5,7 +5,7 @@ import com.saru.movie_booking.model.Theater;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
 
-@Mapper(componentModel = "spring", uses = {ScreenMapper.class})
+@Mapper(componentModel = "spring")
 public interface TheaterMapper {
     TheaterMapper INSTANCE = Mappers.getMapper(TheaterMapper.class);
 
