@@ -1,6 +1,5 @@
 package com.saru.movie_booking.dto;
 
-import com.saru.movie_booking.model.Theater;
 import lombok.Data;
 
 import java.time.LocalDateTime;

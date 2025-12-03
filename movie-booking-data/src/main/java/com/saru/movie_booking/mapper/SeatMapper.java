@@ -7,7 +7,7 @@ import org.mapstruct.factory.Mappers;
 
 @Mapper(componentModel = "spring", uses = {ScreenMapper.class})
 public interface SeatMapper {
-//    SeatMapper INSTANCE = Mappers.getMapper(SeatMapper.class);
+    SeatMapper INSTANCE = Mappers.getMapper(SeatMapper.class);
 
     SeatDTO toDTO(Seat seat);
 

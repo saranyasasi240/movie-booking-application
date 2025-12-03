@@ -7,7 +7,7 @@ import org.mapstruct.factory.Mappers;
 
 @Mapper(componentModel = "spring")
 public interface MovieTheaterMapper {
-//    MovieTheaterMapper INSTANCE = Mappers.getMapper(MovieTheaterMapper.class);
+    MovieTheaterMapper INSTANCE = Mappers.getMapper(MovieTheaterMapper.class);
 
     MovieTheaterDTO toDTO(MovieTheater movieTheater);
     MovieTheater toEntity(MovieTheaterDTO movieTheaterDTO);
