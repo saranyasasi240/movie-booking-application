@@ -1,17 +1,18 @@
 package com.saru.movie_booking.model;
 
 import jakarta.persistence.*;
-import lombok.*;
-
-import java.time.LocalDateTime;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Entity
 @Getter
 @Setter
-@NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "shows")
-public class Show {
+@NoArgsConstructor
+@Table(name = "movie_theater")
+public class MovieTheater {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -24,16 +25,4 @@ public class Show {
     @ManyToOne
     @JoinColumn(name = "theater_id")
     private Theater theater;
-
-    @ManyToOne
-    @JoinColumn(name = "screen_id")
-    private Screen screen;
-
-    @Column(name = "start_time")
-    private LocalDateTime startTime;
-
-    @Column(name = "end_time")
-    private LocalDateTime endTime;
-
-    private double price;
 }

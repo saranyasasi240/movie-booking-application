@@ -23,5 +23,5 @@ public class Screen {
     private String screenNumber;
 
     @Column(name = "total_seats")
-    private String totalSeats;
+    private int totalSeats;
 }

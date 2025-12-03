@@ -3,9 +3,8 @@ package com.saru.movie_booking.dto;
 import lombok.Data;
 
 @Data
-public class ScreenDTO {
+public class MovieTheaterDTO {
     private long id;
+    private MovieDTO movie;
     private TheaterDTO theater;
-    private String screenNumber;
-    private int totalSeats;
 }
