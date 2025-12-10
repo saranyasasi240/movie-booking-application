@@ -20,4 +20,5 @@ public class User {
     @Column(name = "password_hash")
     private String password;
     private String phone;
+    private String role;
 }
