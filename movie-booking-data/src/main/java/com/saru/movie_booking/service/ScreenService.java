@@ -1,16 +1,17 @@
 package com.saru.movie_booking.service;
 
-import com.saru.movie_booking.model.Screen;
+import com.saru.movie_booking.dto.ScreenDTO;
 
 import java.util.List;
 import java.util.Optional;
 
 public interface ScreenService {
-    Screen addScreen(Screen screen);
 
-    List<Screen> getAllScreen();
+    ScreenDTO addScreen(ScreenDTO screenDTO);
 
-    Optional<Screen> getScreenById(Long id);
+    List<ScreenDTO> getAllScreen();
+
+    Optional<ScreenDTO> getScreenById(Long id);
 
     void deleteScreen(Long id);
 }

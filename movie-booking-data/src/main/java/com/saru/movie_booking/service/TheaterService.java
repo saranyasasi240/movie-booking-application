@@ -1,15 +1,17 @@
 package com.saru.movie_booking.service;
 
-import com.saru.movie_booking.model.Theater;
+import com.saru.movie_booking.dto.TheaterDTO;
 
 import java.util.List;
 import java.util.Optional;
 
 public interface TheaterService {
-    Theater addTheater(Theater theater);
-    List<Theater> getAllTheaters();
 
-    Optional<Theater> getTheaterById(Long id);
+    TheaterDTO addTheater(TheaterDTO theaterDTO);
+
+    List<TheaterDTO> getAllTheaters();
+
+    Optional<TheaterDTO> getTheaterById(Long id);
 
     void deleteTheater(Long id);
 }
