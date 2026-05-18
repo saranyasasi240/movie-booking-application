@@ -11,6 +11,5 @@ public interface BookingSeatMapper {
     BookingSeatMapper INSTANCE = Mappers.getMapper(BookingSeatMapper.class);
 
     BookingSeatDTO toDTO(BookingSeat bookingSeat);
-
     BookingSeat toEntity(BookingSeatDTO bookingSeatDTO);
 }

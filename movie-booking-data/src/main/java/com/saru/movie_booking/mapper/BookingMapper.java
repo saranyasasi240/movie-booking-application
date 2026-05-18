@@ -8,6 +8,7 @@ import org.mapstruct.factory.Mappers;
 
 @Mapper(componentModel = "spring", uses = {ShowMapper.class, UserMapper.class})
 public interface BookingMapper {
+
     BookingMapper INSTANCE = Mappers.getMapper(BookingMapper.class);
 
     BookingDTO toDTO(Booking booking);

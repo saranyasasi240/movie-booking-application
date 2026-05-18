@@ -11,6 +11,5 @@ public interface ScreenMapper {
     ScreenMapper INSTANCE = Mappers.getMapper(ScreenMapper.class);
 
     ScreenDTO toDTO(Screen screen);
-
     Screen toEntity(ScreenDTO screenDTO);
 }
