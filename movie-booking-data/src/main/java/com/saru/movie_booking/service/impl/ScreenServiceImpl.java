@@ -3,7 +3,9 @@ package com.saru.movie_booking.service.impl;
 import com.saru.movie_booking.dto.ScreenDTO;
 import com.saru.movie_booking.mapper.ScreenMapper;
 import com.saru.movie_booking.model.Screen;
+import com.saru.movie_booking.model.Theater;
 import com.saru.movie_booking.repository.ScreenRepository;
+import com.saru.movie_booking.repository.TheaterRepository;
 import com.saru.movie_booking.service.ScreenService;
 import org.springframework.stereotype.Service;
 
@@ -16,15 +18,20 @@ public class ScreenServiceImpl implements ScreenService {
 
     private final ScreenRepository screenRepository;
     private final ScreenMapper screenMapper;
+    private final TheaterRepository theaterRepository;
 
-    public ScreenServiceImpl(ScreenRepository screenRepository, ScreenMapper screenMapper) {
+    public ScreenServiceImpl(ScreenRepository screenRepository, ScreenMapper screenMapper, TheaterRepository theaterRepository) {
         this.screenRepository = screenRepository;
         this.screenMapper = screenMapper;
+        this.theaterRepository = theaterRepository;
     }
 
     @Override
     public ScreenDTO addScreen(ScreenDTO screenDTO) {
         Screen screen = screenMapper.toEntity(screenDTO);
+        Theater theater = theaterRepository.findById(screenDTO.getTheaterId())
+                .orElseThrow(() -> new RuntimeException("Theater not found..!"));
+        screen.setTheater(theater);
         Screen savedScreen = screenRepository.save(screen);
         return screenMapper.toDTO(savedScreen);
     }

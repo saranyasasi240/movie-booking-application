@@ -5,7 +5,7 @@ import lombok.Data;
 @Data
 public class ScreenDTO {
     private long id;
-    private TheaterDTO theater;
+    private Long theaterId;
     private String screenNumber;
     private String totalSeats;
 }
