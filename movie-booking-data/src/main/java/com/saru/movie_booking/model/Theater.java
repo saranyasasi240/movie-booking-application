@@ -22,6 +22,6 @@ public class Theater {
     private String city;
     private String address;
 
-    @OneToMany(cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "theater", cascade = CascadeType.ALL)
     private List<Screen> screens;
 }
