@@ -2,7 +2,9 @@ package com.saru.movie_booking.service.impl;
 
 import com.saru.movie_booking.dto.SeatDTO;
 import com.saru.movie_booking.mapper.SeatMapper;
+import com.saru.movie_booking.model.Screen;
 import com.saru.movie_booking.model.Seat;
+import com.saru.movie_booking.repository.ScreenRepository;
 import com.saru.movie_booking.repository.SeatRepository;
 import com.saru.movie_booking.service.SeatService;
 import org.springframework.stereotype.Service;
@@ -16,15 +18,20 @@ public class SeatServiceImpl implements SeatService {
 
     private final SeatRepository seatRepository;
     private final SeatMapper seatMapper;
+    private final ScreenRepository screenRepository;
 
-    public SeatServiceImpl(SeatRepository seatRepository, SeatMapper seatMapper) {
+    public SeatServiceImpl(SeatRepository seatRepository, SeatMapper seatMapper, ScreenRepository screenRepository) {
         this.seatRepository = seatRepository;
         this.seatMapper = seatMapper;
+        this.screenRepository = screenRepository;
     }
 
     @Override
     public SeatDTO addSeat(SeatDTO seatDTO) {
         Seat seat = seatMapper.toEntity(seatDTO);
+        Screen screen = screenRepository.findById(seatDTO.getScreenId())
+                .orElseThrow(()->new RuntimeException("Screen Not found..!"));
+        seat.setScreen(screen);
         Seat savedSeat = seatRepository.save(seat);
         return seatMapper.toDTO(savedSeat);
     }
