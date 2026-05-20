@@ -2,14 +2,13 @@ package com.saru.movie_booking.dto;
 
 import lombok.Data;
 
-import java.time.LocalDateTime;
-
 @Data
 public class ShowDTO {
     private long id;
-    private MovieDTO movie;
-    private ScreenDTO screen;
-    private LocalDateTime startTime;
-    private LocalDateTime endTime;
+    private Long theaterId;
+    private Long movieId;
+    private Long screenId;
+    private String startTime;
+    private String endTime;
     private double price;
 }

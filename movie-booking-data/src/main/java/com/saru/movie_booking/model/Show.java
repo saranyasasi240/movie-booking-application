@@ -3,8 +3,6 @@ package com.saru.movie_booking.model;
 import jakarta.persistence.*;
 import lombok.*;
 
-import java.time.LocalDateTime;
-
 @Entity
 @Getter
 @Setter
@@ -18,6 +16,10 @@ public class Show {
     private long id;
 
     @ManyToOne
+    @JoinColumn(name = "theater_id")
+    private Theater theater;
+
+    @ManyToOne
     @JoinColumn(name = "movie_id")
     private Movie movie;
 
@@ -26,10 +28,10 @@ public class Show {
     private Screen screen;
 
     @Column(name = "start_time")
-    private LocalDateTime startTime;
+    private String startTime;
 
     @Column(name = "end_time")
-    private LocalDateTime endTime;
+    private String endTime;
 
     private double price;
 }

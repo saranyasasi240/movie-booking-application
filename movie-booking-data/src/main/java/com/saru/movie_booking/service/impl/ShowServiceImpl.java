@@ -3,7 +3,10 @@ package com.saru.movie_booking.service.impl;
 import com.saru.movie_booking.dto.ShowDTO;
 import com.saru.movie_booking.mapper.ShowMapper;
 import com.saru.movie_booking.model.Show;
+import com.saru.movie_booking.repository.MovieRepository;
+import com.saru.movie_booking.repository.ScreenRepository;
 import com.saru.movie_booking.repository.ShowRepository;
+import com.saru.movie_booking.repository.TheaterRepository;
 import com.saru.movie_booking.service.ShowService;
 import org.springframework.stereotype.Service;
 
@@ -15,16 +18,27 @@ import java.util.Optional;
 public class ShowServiceImpl implements ShowService {
 
     private final ShowRepository showRepository;
+    private final TheaterRepository theaterRepository;
+    private final MovieRepository movieRepository;
+    private final ScreenRepository screenRepository;
     private final ShowMapper showMapper;
 
-    public ShowServiceImpl(ShowRepository showRepository, ShowMapper showMapper) {
+    public ShowServiceImpl(ShowRepository showRepository, ShowMapper showMapper,
+                           TheaterRepository theaterRepository,MovieRepository movieRepository,
+                           ScreenRepository screenRepository) {
         this.showRepository = showRepository;
+        this.theaterRepository = theaterRepository;
+        this.movieRepository = movieRepository;
+        this.screenRepository = screenRepository;
         this.showMapper = showMapper;
     }
 
     @Override
     public ShowDTO addShow(ShowDTO showDTO) {
         Show show = showMapper.toEntity(showDTO);
+        show.setTheater(theaterRepository.findById(showDTO.getTheaterId()).orElseThrow(()-> new RuntimeException("No theater found.!")));
+        show.setMovie(movieRepository.findById(showDTO.getMovieId()).orElseThrow(()-> new RuntimeException("No movie found.!")));
+        show.setScreen(screenRepository.findById(showDTO.getScreenId()).orElseThrow(()-> new RuntimeException("No screen found.!")));
         Show savedShow = showRepository.save(show);
         return showMapper.toDTO(savedShow);
     }
