@@ -24,6 +24,10 @@ public class Show {
     private Movie movie;
 
     @ManyToOne
+    @JoinColumn(name = "theater_id")
+    private Theater theater;
+
+    @ManyToOne
     @JoinColumn(name = "screen_id")
     private Screen screen;
 
