@@ -1,16 +1,17 @@
 package com.saru.movie_booking.service;
 
-import com.saru.movie_booking.model.Seat;
+import com.saru.movie_booking.dto.SeatDTO;
 
 import java.util.List;
 import java.util.Optional;
 
 public interface SeatService {
-    Seat addSeat(Seat seat);
 
-    List<Seat> getAllSeat();
+    SeatDTO addSeat(SeatDTO seatDTO);
 
-    Optional<Seat> getSeatById(Long id);
+    List<SeatDTO> getAllSeat();
+
+    Optional<SeatDTO> getSeatById(Long id);
 
     void deleteSeat(Long id);
 }

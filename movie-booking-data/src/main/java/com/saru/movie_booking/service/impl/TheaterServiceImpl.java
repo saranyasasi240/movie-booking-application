@@ -13,6 +13,7 @@ import java.util.Optional;
 
 @Service
 public class TheaterServiceImpl implements TheaterService {
+
     private final TheaterRepository theaterRepository;
     private final TheaterMapper theaterMapper;
 
@@ -24,15 +25,15 @@ public class TheaterServiceImpl implements TheaterService {
     @Override
     public TheaterDTO addTheater(TheaterDTO theaterDTO) {
         Theater theater = theaterMapper.toEntity(theaterDTO);
-        Theater newTheater = theaterRepository.save(theater);
-        return theaterMapper.toDTO(newTheater);
+        Theater savedTheater = theaterRepository.save(theater);
+        return theaterMapper.toDTO(savedTheater);
     }
 
     @Override
     public List<TheaterDTO> getAllTheaters() {
         List<TheaterDTO> allTheaterDTO = new ArrayList<>();
-        List<Theater> allTheater = theaterRepository.findAll();
-        for (Theater theater : allTheater) {
+        List<Theater> allTheaters = theaterRepository.findAll();
+        for (Theater theater : allTheaters) {
             allTheaterDTO.add(theaterMapper.toDTO(theater));
         }
         return allTheaterDTO;

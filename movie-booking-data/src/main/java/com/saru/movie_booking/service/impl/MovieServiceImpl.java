@@ -32,8 +32,8 @@ public class MovieServiceImpl implements MovieService {
     @Override
     public List<MovieDTO> getAllMovies() {
         List<MovieDTO> allMovieDTO = new ArrayList<>();
-        List<Movie> allMovie = movieRepository.findAll();
-        for (Movie movie : allMovie) {
+        List<Movie> allMovies = movieRepository.findAll();
+        for (Movie movie : allMovies) {
             allMovieDTO.add(movieMapper.toDTO(movie));
         }
         return allMovieDTO;

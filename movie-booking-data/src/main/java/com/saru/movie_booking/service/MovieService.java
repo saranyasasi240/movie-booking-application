@@ -6,7 +6,8 @@ import java.util.List;
 import java.util.Optional;
 
 public interface MovieService {
-    MovieDTO addMovie(MovieDTO movie);
+
+    MovieDTO addMovie(MovieDTO movieDTO);
 
     List<MovieDTO> getAllMovies();
 

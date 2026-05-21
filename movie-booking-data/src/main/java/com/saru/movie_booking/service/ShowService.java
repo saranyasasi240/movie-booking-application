@@ -1,16 +1,17 @@
 package com.saru.movie_booking.service;
 
-import com.saru.movie_booking.model.Show;
+import com.saru.movie_booking.dto.ShowDTO;
 
 import java.util.List;
 import java.util.Optional;
 
 public interface ShowService {
-    Show addShow(Show show);
 
-    List<Show> getAllShow();
+    ShowDTO addShow(ShowDTO showDTO);
 
-    Optional<Show> getShowById(Long id);
+    List<ShowDTO> getAllShow();
+
+    Optional<ShowDTO> getShowById(Long id);
 
     void deleteShow(Long id);
 }
