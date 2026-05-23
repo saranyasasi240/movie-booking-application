@@ -10,5 +10,4 @@ public class ShowDTO {
     private Long screenId;
     private String startTime;
     private String endTime;
-    private double price;
 }

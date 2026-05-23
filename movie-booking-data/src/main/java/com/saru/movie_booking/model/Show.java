@@ -32,6 +32,4 @@ public class Show {
 
     @Column(name = "end_time")
     private String endTime;
-
-    private double price;
 }
