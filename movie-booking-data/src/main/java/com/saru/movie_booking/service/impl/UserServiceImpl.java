@@ -5,6 +5,8 @@ import com.saru.movie_booking.mapper.UserMapper;
 import com.saru.movie_booking.model.User;
 import com.saru.movie_booking.repository.UserRepository;
 import com.saru.movie_booking.service.UserService;
+import lombok.RequiredArgsConstructor;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -12,19 +14,17 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
+@RequiredArgsConstructor
 public class UserServiceImpl implements UserService {
 
     private final UserRepository userRepository;
     private final UserMapper userMapper;
-
-    public UserServiceImpl(UserRepository userRepository, UserMapper userMapper) {
-        this.userRepository = userRepository;
-        this.userMapper = userMapper;
-    }
+    private final PasswordEncoder passwordEncoder;
 
     @Override
     public UserDTO addUser(UserDTO userDTO) {
         User user = userMapper.toEntity(userDTO);
+        user.setPassword(passwordEncoder.encode(userDTO.getPassword()));
         User savedUser = userRepository.save(user);
         return userMapper.toDTO(savedUser);
     }
@@ -57,6 +57,7 @@ public class UserServiceImpl implements UserService {
         existingUser.setName(userDTO.getName());
         existingUser.setEmail(userDTO.getEmail());
         existingUser.setPhone(userDTO.getPhone());
+        existingUser.setPassword(passwordEncoder.encode(userDTO.getPassword()));
         existingUser.setRole(userDTO.getRole());
         return userMapper.toDTO(userRepository.save(existingUser));
     }
