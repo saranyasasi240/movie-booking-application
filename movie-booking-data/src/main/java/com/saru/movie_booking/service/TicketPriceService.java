@@ -2,8 +2,6 @@ package com.saru.movie_booking.service;
 
 import com.saru.movie_booking.dto.TicketPriceDTO;
 
-import java.util.Optional;
-
 public interface TicketPriceService {
 
     TicketPriceDTO addTicketPrice(TicketPriceDTO ticketPriceDTO);
