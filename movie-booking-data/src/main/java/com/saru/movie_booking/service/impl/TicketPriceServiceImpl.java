@@ -23,6 +23,9 @@ public class TicketPriceServiceImpl implements TicketPriceService {
 
     @Override
     public TicketPriceDTO addTicketPrice(TicketPriceDTO ticketPriceDTO) {
+        if (ticketPriceRepository.findByShowIdAndSeatId(ticketPriceDTO.getShowId(), ticketPriceDTO.getSeatId()).isPresent()) {
+            throw new RuntimeException("Ticket price already exists for this show and seat..!");
+        }
         TicketPrice ticketPrice = ticketPriceMapper.toEntity(ticketPriceDTO);
         ticketPrice.setShow(resolveShow(ticketPriceDTO.getShowId()));
         ticketPrice.setSeat(resolveSeat(ticketPriceDTO.getSeatId()));

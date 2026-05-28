@@ -8,7 +8,9 @@ import lombok.*;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "ticket_price")
+@Table(name = "ticket_price", uniqueConstraints = {
+        @UniqueConstraint(columnNames = {"show_id", "seat_id"})
+})
 public class TicketPrice {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
