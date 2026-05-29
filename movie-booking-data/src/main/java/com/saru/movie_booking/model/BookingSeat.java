@@ -3,7 +3,7 @@ package com.saru.movie_booking.model;
 import jakarta.persistence.*;
 import lombok.*;
 
-//@Entity
+@Entity
 @Getter
 @Setter
 @NoArgsConstructor
@@ -12,13 +12,19 @@ import lombok.*;
 @Table(name = "booking_seats")
 public class BookingSeat {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private long id;
 
+    @ManyToOne
     @JoinColumn(name = "booking_id")
-    private Booking bookingId;
+    private Booking booking;
 
+    @ManyToOne
     @JoinColumn(name = "seat_id")
     private Seat seat;
 
     @Column(name = "status")
     private String status;
+
 }

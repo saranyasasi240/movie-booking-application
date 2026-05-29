@@ -8,4 +8,5 @@ public class SeatDTO {
     private Long screenId;
     private String seatNumber;
     private String seatType;
+    private String status;
 }

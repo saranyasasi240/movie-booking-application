@@ -25,4 +25,7 @@ public class Seat {
 
     @Column(name = "seat_type")
     private String seatType;
+
+    @Column(name = "status")
+    private String status;
 }

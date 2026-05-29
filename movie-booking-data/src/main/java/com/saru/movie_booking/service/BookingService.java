@@ -14,4 +14,6 @@ public interface BookingService {
     Optional<BookingDTO> getBookingById(Long id);
 
     void deleteBooking(Long id);
+
+    BookingDTO cancelBooking(Long id);
 }
