@@ -8,6 +8,7 @@ import com.saru.movie_booking.model.Seat;
 import com.saru.movie_booking.model.TicketPrice;
 import com.saru.movie_booking.repository.*;
 import com.saru.movie_booking.service.BookingService;
+import com.saru.movie_booking.service.EmailService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -27,6 +28,7 @@ public class BookingServiceImpl implements BookingService {
     private final SeatRepository seatRepository;
     private final TicketPriceRepository ticketPriceRepository;
     private final BookingSeatRepository bookingSeatRepository;
+    private final EmailService emailService;
 
     @Override
     public Optional<BookingDTO> getBookingById(Long id) {
@@ -77,6 +79,8 @@ public class BookingServiceImpl implements BookingService {
         }
         bookingSeatRepository.saveAll(bookingSeats);
 
+        // send booking confirmation email
+        emailService.sendBookingConfirmation(savedBooking, bookingSeats);
 
         BookingDTO savedDTO = bookingMapper.toDTO(savedBooking);
         savedDTO.setSeatIds(bookingDTO.getSeatIds());
@@ -101,6 +105,10 @@ public class BookingServiceImpl implements BookingService {
         seatRepository.saveAll(bookedSeats);
 
         bookingRepository.save(booking);
+
+        // send cancellation email
+        emailService.sendCancellationEmail(booking, bookingSeatList);
+
         return bookingMapper.toDTO(booking);
     }
 
