@@ -9,7 +9,9 @@ import lombok.*;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "seats")
+@Table(name = "seats", uniqueConstraints = {
+        @UniqueConstraint(columnNames = {"screen_id", "seat_number"})
+})
 public class Seat {
 
     @Id

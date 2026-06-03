@@ -28,6 +28,9 @@ public class SeatServiceImpl implements SeatService {
 
     @Override
     public SeatDTO addSeat(SeatDTO seatDTO) {
+        if (seatRepository.existsByScreen_IdAndSeatNumber(seatDTO.getScreenId(), seatDTO.getSeatNumber())) {
+            throw new RuntimeException("Seat " + seatDTO.getSeatNumber() + " already exists for this screen..!");
+        }
         Seat seat = seatMapper.toEntity(seatDTO);
         Screen screen = screenRepository.findById(seatDTO.getScreenId())
                 .orElseThrow(()->new RuntimeException("Screen Not found..!"));

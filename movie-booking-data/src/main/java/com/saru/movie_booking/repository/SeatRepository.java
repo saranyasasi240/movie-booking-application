@@ -9,4 +9,5 @@ import java.util.List;
 @Repository
 public interface SeatRepository extends JpaRepository<Seat, Long> {
     List<Seat> findByScreen_IdAndStatus(Long screenId, String status);
+    boolean existsByScreen_IdAndSeatNumber(Long screenId, String seatNumber);
 }
