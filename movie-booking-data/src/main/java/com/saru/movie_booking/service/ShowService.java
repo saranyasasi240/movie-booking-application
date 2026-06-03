@@ -14,4 +14,8 @@ public interface ShowService {
     Optional<ShowDTO> getShowById(Long id);
 
     void deleteShow(Long id);
+
+    List<ShowDTO> searchByMovie(Long movieId);
+    List<ShowDTO> searchByTheater(Long theaterId);
+    List<ShowDTO> searchByDate(String date);
 }

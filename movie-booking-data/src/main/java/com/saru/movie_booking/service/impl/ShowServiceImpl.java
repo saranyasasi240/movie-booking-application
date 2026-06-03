@@ -64,4 +64,22 @@ public class ShowServiceImpl implements ShowService {
     public void deleteShow(Long id) {
         showRepository.deleteById(id);
     }
+
+    @Override
+    public List<ShowDTO> searchByMovie(Long movieId) {
+        return showRepository.findByMovie_Id(movieId)
+                .stream().map(showMapper::toDTO).toList();
+    }
+
+    @Override
+    public List<ShowDTO> searchByTheater(Long theaterId) {
+        return showRepository.findByScreen_Theater_Id(theaterId)
+                .stream().map(showMapper::toDTO).toList();
+    }
+
+    @Override
+    public List<ShowDTO> searchByDate(String date) {
+        return showRepository.findByStartTimeContaining(date)
+                .stream().map(showMapper::toDTO).toList();
+    }
 }

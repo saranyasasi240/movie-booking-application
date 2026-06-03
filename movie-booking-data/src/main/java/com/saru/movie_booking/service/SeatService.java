@@ -14,4 +14,6 @@ public interface SeatService {
     Optional<SeatDTO> getSeatById(Long id);
 
     void deleteSeat(Long id);
+
+    List<SeatDTO> getAvailableSeatsByScreen(Long screenId);
 }

@@ -14,4 +14,8 @@ public interface MovieService {
     Optional<MovieDTO> getMovieById(Long id);
 
     void deleteMovie(Long id);
+
+    List<MovieDTO> searchByTitle(String title);
+    List<MovieDTO> searchByGenre(String genre);
+    List<MovieDTO> searchByLanguage(String language);
 }

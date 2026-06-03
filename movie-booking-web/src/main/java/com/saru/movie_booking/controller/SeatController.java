@@ -36,4 +36,9 @@ public class SeatController {
         seatService.deleteSeat(id);
         return ResponseEntity.noContent().build();
     }
+
+    @GetMapping("/available")
+    public ResponseEntity<List<SeatDTO>> getAvailableSeatsByScreen(@RequestParam Long screenId) {
+        return ResponseEntity.ok(seatService.getAvailableSeatsByScreen(screenId));
+    }
 }

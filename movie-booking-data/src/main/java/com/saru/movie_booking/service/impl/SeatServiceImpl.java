@@ -57,4 +57,10 @@ public class SeatServiceImpl implements SeatService {
     public void deleteSeat(Long id) {
         seatRepository.deleteById(id);
     }
+
+    @Override
+    public List<SeatDTO> getAvailableSeatsByScreen(Long screenId) {
+        return seatRepository.findByScreen_IdAndStatus(screenId, "AVAILABLE")
+                .stream().map(seatMapper::toDTO).toList();
+    }
 }

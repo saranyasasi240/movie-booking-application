@@ -36,4 +36,19 @@ public class MovieController {
         movieService.deleteMovie(id);
         return ResponseEntity.noContent().build();
     }
+
+    @GetMapping("/search/title")
+    public ResponseEntity<List<MovieDTO>> searchByTitle(@RequestParam String title) {
+        return ResponseEntity.ok(movieService.searchByTitle(title));
+    }
+
+    @GetMapping("/search/genre")
+    public ResponseEntity<List<MovieDTO>> searchByGenre(@RequestParam String genre) {
+        return ResponseEntity.ok(movieService.searchByGenre(genre));
+    }
+
+    @GetMapping("/search/language")
+    public ResponseEntity<List<MovieDTO>> searchByLanguage(@RequestParam String language) {
+        return ResponseEntity.ok(movieService.searchByLanguage(language));
+    }
 }

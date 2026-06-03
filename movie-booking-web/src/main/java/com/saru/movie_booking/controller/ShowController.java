@@ -36,4 +36,19 @@ public class ShowController {
         showService.deleteShow(id);
         return ResponseEntity.noContent().build();
     }
+
+    @GetMapping("/search/movie")
+    public ResponseEntity<List<ShowDTO>> searchByMovie(@RequestParam Long movieId) {
+        return ResponseEntity.ok(showService.searchByMovie(movieId));
+    }
+
+    @GetMapping("/search/theater")
+    public ResponseEntity<List<ShowDTO>> searchByTheater(@RequestParam Long theaterId) {
+        return ResponseEntity.ok(showService.searchByTheater(theaterId));
+    }
+
+    @GetMapping("/search/date")
+    public ResponseEntity<List<ShowDTO>> searchByDate(@RequestParam String date) {
+        return ResponseEntity.ok(showService.searchByDate(date));
+    }
 }

@@ -50,4 +50,22 @@ public class MovieServiceImpl implements MovieService {
     public void deleteMovie(Long id) {
         movieRepository.deleteById(id);
     }
+
+    @Override
+    public List<MovieDTO> searchByTitle(String title) {
+        return movieRepository.findByTitleContainingIgnoreCase(title)
+                .stream().map(movieMapper::toDTO).toList();
+    }
+
+    @Override
+    public List<MovieDTO> searchByGenre(String genre) {
+        return movieRepository.findByGenreIgnoreCase(genre)
+                .stream().map(movieMapper::toDTO).toList();
+    }
+
+    @Override
+    public List<MovieDTO> searchByLanguage(String language) {
+        return movieRepository.findByLanguageIgnoreCase(language)
+                .stream().map(movieMapper::toDTO).toList();
+    }
 }
